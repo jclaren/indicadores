@@ -6,14 +6,15 @@
  * @flow strict-local
  */
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View>
       <Text>Vamos que de puede!</Text>
+      <Button title="Ir a detalle" onPress={() => navigation.push('Detalle')} />
     </View>
   );
 };
@@ -35,7 +36,7 @@ const AppNavigator = createStackNavigator(
       screen: DetalleScreen,
     },
   },
-  {initialRouteName: 'Detalle'},
+  {initialRouteName: 'Home'},
 );
 
 export default createAppContainer(AppNavigator);
