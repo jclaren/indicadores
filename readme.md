@@ -1,7 +1,11 @@
 ### Instalar dependencias
 npm install
 
+### Ejecutar en IOS
 cd ios
 pod install
 
-### Instalar dependencias
+react-native run-ios
+
+### Editar archivo android/local.properties
+sdk.dir = {/path/Android/sdk}
