@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 import ListItem from '../components/ListItem';
 
 const styles = StyleSheet.create({
@@ -12,23 +12,50 @@ const styles = StyleSheet.create({
   list: {
     alignSelf: 'stretch',
   },
+  item: {
+    paddingHorizontal: 15,
+    height: 60,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
 });
 
-const data = {_id: 1, name: 'Churrasco', desc: 'Plato tipico'};
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+];
+
+const Item = ({title}) => (
+  <TouchableOpacity style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </TouchableOpacity>
+);
 
 const Indicators = ({navigation}) => {
+  const renderItem = ({item}) => (
+    <Item
+      title={item.title}
+      onPress={() => navigation.navigate('modal')}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <FlatList
-        style={styles.list}
-        data={data}
-        keyExtractor={x => x._id}
-        renderItem={({item}) => (
-          <ListItem
-            onPress={() => navigation.navigate('modal', {_id: item._id})}
-            name={item.name}
-          />
-        )}
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
       />
     </View>
   );
