@@ -5,25 +5,37 @@
  * @format
  * @flow strict-local
  */
-import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, View, ActivityIndicator} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import axios from 'axios';
 
 const HomeScreen = ({navigation}) => {
+  const [loading, setLoading] = useState(true);
+  const [meals, setMeals] = useState([]);
+
+  const fetchMeals = async () => {
+    axios.get('https://mindicador.cl/api').then(function (response) {
+      console.log(response.data);
+      setMeals(response.data);
+    });
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchMeals();
+  }, []);
+
   return (
     <View>
-      <Text>Vamos que de puede!</Text>
-      <Button
-        title="Ir a detalle"
-        onPress={() => navigation.navigate('Detalle', {name: 'Raul'})}
-      />
+      <ActivityIndicator />
     </View>
   );
 };
 
-const DetalleScreen = ( {navigation }) => {
-  const name = navigation.getParam("name")
+const DetalleScreen = ({navigation}) => {
+  const name = navigation.getParam('name');
   return (
     <View>
       <Text>Alegale {name}</Text>
