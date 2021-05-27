@@ -10,19 +10,23 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation}) => {
   return (
     <View>
       <Text>Vamos que de puede!</Text>
-      <Button title="Ir a detalle" onPress={() => navigation.push('Detalle')} />
+      <Button
+        title="Ir a detalle"
+        onPress={() => navigation.navigate('Detalle', {name: 'Raul'})}
+      />
     </View>
   );
 };
 
-const DetalleScreen = () => {
+const DetalleScreen = ( {navigation }) => {
+  const name = navigation.getParam("name")
   return (
     <View>
-      <Text>Alegale</Text>
+      <Text>Alegale {name}</Text>
     </View>
   );
 };
