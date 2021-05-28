@@ -1,34 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
-import { Button } from 'react-native';
 
-const Indicators = ({navigation}) => {
+const Values = ({navigation}) => {
+  const name = navigation.getParam('name');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const fetchData = async () => {
-    axios.get('https://mindicador.cl/api').then(function (response) {
-      const result = Object.values(response.data).filter(item => item.nombre);
-      setData(result);
+    var link = 'https://mindicador.cl/api/' + name;
+    axios.get(link).then(function (response) {
+      console.log(response.data.serie);
+      setData(response.data.serie);
       setLoading(false);
     });
   };
-
   useEffect(() => {
     fetchData();
   }, []);
 
+  const dateFormat = date => {
+    return date.substring(0, 10);
+  };
+
   const renderItem = ({item}) => (
     <TouchableOpacity style={styles.item}>
-      <Text
-        style={styles.title}
-        onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
-        {item.nombre}
-      </Text>
-      <Button 
-        title="i"
-        onPress={() => navigation.navigate('Detalles', {name: item.codigo})}
-      />
+      <Text style={styles.title}>{dateFormat(item.fecha)}</Text>
+      <Text style={styles.title}>{item.valor}</Text>
     </TouchableOpacity>
   );
 
@@ -37,13 +34,13 @@ const Indicators = ({navigation}) => {
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.codigo}
+        keyExtractor={item => item.fecha}
       />
     </View>
   );
 };
 
-export default Indicators;
+export default Values;
 
 const styles = StyleSheet.create({
   container: {

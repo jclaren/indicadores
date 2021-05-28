@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const Detail = ({navigation}) => {
   const name = navigation.getParam('name');
+  console.log("******* Pantalla nueva ********");
+  console.log(name);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const fetchData = async () => {
