@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import Chart from '../components/Chart';
 import date from '../components/Date';
 
 const Detail = ({navigation}) => {
