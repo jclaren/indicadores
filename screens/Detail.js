@@ -1,19 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 import axios from 'axios';
+import Chart from '../components/Chart';
 
 const Detail = ({navigation}) => {
   const indicator = navigation.getParam('indicator');
-  console.log("******* Pantalla nueva 2 ********");
-  console.log(indicator); 
+  console.log('******* Pantalla nueva 2 ********');
+  console.log(indicator);
 
   return (
-    <View style={styles.container}>
-     <Text>{indicator.valor}</Text>
-     <Text>{indicator.nombre}</Text>
-     <Text>{indicator.fecha}</Text>
-     <Text>{indicator.unidad_medida}</Text>
-    </View>
+      <View style={styles.container}>
+        <Text>{indicator.valor}</Text>
+        <Text>{indicator.nombre}</Text>
+        <Text>{indicator.fecha}</Text>
+        <Text>{indicator.unidad_medida}</Text>
+        <Chart></Chart>
+      </View>      
   );
 };
 
@@ -25,5 +27,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'stretch',
     justifyContent: 'flex-start',
-  }
+  },
 });
