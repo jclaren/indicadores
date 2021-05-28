@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import mindicador from '../api/mindicador';
+import date from '../components/Date'
 
 const Values = ({navigation}) => {
   const name = navigation.getParam('name');
@@ -20,13 +21,9 @@ const Values = ({navigation}) => {
     });
   }, []);
 
-  const dateFormat = date => {
-    return date.substring(0, 10);
-  };
-
   const renderItem = ({item}) => (
     <TouchableOpacity style={styles.row}>
-      <Text style={styles.title}>{dateFormat(item.fecha)}</Text>
+      <Text style={styles.title}>{date(item.fecha)}</Text>
       <Text style={styles.button}>{item.valor}</Text>
     </TouchableOpacity>
   );
