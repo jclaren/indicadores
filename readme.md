@@ -1,5 +1,5 @@
 # Solucion React-Native para Indicadores
-
+## Autor: Joaquin Claren
 ### Instalar dependencias
 npm install
 
