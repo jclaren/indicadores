@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 15,
     paddingLeft: 7,
-    paddingRight: 20,
   },
   button: {
     paddingTop: 15,

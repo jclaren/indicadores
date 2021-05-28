@@ -21,10 +21,10 @@ const Indicators = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.row}>
+    <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
       <Text
         style={styles.title}
-        onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
+        >
         {item.nombre}
       </Text>
       <Text
@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 15,
     paddingLeft: 7,
-    paddingRight: 20,
   },
   button: {
     paddingTop: 15,
