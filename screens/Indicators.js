@@ -27,7 +27,7 @@ const Indicators = ({navigation}) => {
       </Text>
       <Button 
         title="i"
-        onPress={() => navigation.navigate('Detalles', {name: item.codigo})}
+        onPress={() => navigation.navigate('Detalles', {indicator: item})}
       />
     </TouchableOpacity>
   );
