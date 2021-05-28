@@ -3,16 +3,8 @@ import {View, Text} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import IndicatorsScreen from './screens/Indicators';
+import DetailScreen from './screens/Detail';
 import Modal from './screens/Modal';
-
-const DetalleScreen = ({navigation}) => {
-  const name = navigation.getParam('name');
-  return (
-    <View>
-      <Text>Alegale {name}</Text>
-    </View>
-  );
-};
 
 const AppNavigator = createStackNavigator(
   {
@@ -20,7 +12,7 @@ const AppNavigator = createStackNavigator(
       screen: IndicatorsScreen,
     },
     Detalle: {
-      screen: DetalleScreen,
+      screen: DetailScreen,
     },
   },
   {initialRouteName: 'Home'},
