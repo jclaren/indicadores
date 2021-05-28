@@ -43,7 +43,7 @@ const Values = ({navigation}) => {
         showsVerticalScrollIndicator={false}
         data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.fecha}
+        keyExtractor={item => item.fecha+Math.random()}
       />
     </View>
   );
