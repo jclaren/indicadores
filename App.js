@@ -3,21 +3,26 @@ import {createStackNavigator} from 'react-navigation-stack';
 import IndicatorsScreen from './screens/Indicators';
 import Modal from './screens/Modal';
 
+const DetalleScreen = ({navigation}) => {
+  const name = navigation.getParam('name');
+  return (
+    <View>
+      <Text>Alegale {name}</Text>
+    </View>
+  );
+};
+
 const AppNavigator = createStackNavigator(
   {
-    Indicators: {
+    Home: {
       screen: IndicatorsScreen,
     },
+    Detalle: {
+      screen: DetalleScreen,
+    },
   },
-  {initialRouteName: 'Indicators'},
+  {initialRouteName: 'Home'},
 );
 
-const RootStack = createStackNavigator(
-  {
-    Main: AppNavigator,
-    Modal: Modal,
-  },
-  {mode: 'modal', headerMode: 'none'},
-);
 
-export default createAppContainer(RootStack);
+export default createAppContainer(AppNavigator);
