@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import axios from 'axios';
-
-const Item = ({title}) => (
-  <TouchableOpacity style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </TouchableOpacity>
-);
 
 const Indicators = ({navigation}) => {
   const [loading, setLoading] = useState(true);
@@ -23,9 +23,15 @@ const Indicators = ({navigation}) => {
     fetchData();
   }, []);
 
-  const renderItem = ({item}) => (
-    <Item title={item.nombre} onPress={() => navigation.navigate('modal')} />
+  const Item = ({title}) => (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => navigation.navigate('Detalle', {name: 'Raul'})}>
+      <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
   );
+
+  const renderItem = ({item}) => <Item title={item.nombre} />;
 
   return (
     <View style={styles.container}>
