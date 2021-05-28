@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
-import { Button } from 'react-native';
+import {Button} from 'react-native';
 
 const Indicators = ({navigation}) => {
   const [loading, setLoading] = useState(true);
@@ -19,16 +19,15 @@ const Indicators = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.row}>
       <Text
         style={styles.title}
         onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
         {item.nombre}
       </Text>
-      <Button 
-        title="i"
+      <Text style={styles.button}
         onPress={() => navigation.navigate('Detalles', {indicator: item})}
-      />
+         >i</Text>
     </TouchableOpacity>
   );
 
@@ -48,18 +47,24 @@ export default Indicators;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
   },
-  list: {
-    alignSelf: 'stretch',
-  },
-  item: {
-    paddingHorizontal: 15,
+  row: {
+    flex: 1,
+    padding: 15,
+    flexDirection: 'row',
     height: 60,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+  },
+  title: {
+    justifyContent: 'flex-start',
+  },
+  button: {
+    paddingHorizontal: 15,
+    paddingTop: 5,
+    color: 'blue',
+    fontSize: 16,
+    backgroundColor: '#eee'
   },
 });

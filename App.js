@@ -13,7 +13,7 @@ const AppNavigator = createStackNavigator(
       screen: IndicatorsScreen,
     },
     Valores: {
-      screen: ValuesScreen,
+      screen: ValuesScreen,      
     },
     Detalles: {
       screen: DetailScreen,
