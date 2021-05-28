@@ -9,7 +9,7 @@ import Modal from './screens/Modal';
 
 const AppNavigator = createStackNavigator(
   {
-    Home: {
+    Indicadores: {
       screen: IndicatorsScreen,
     },
     Valores: {
@@ -19,7 +19,7 @@ const AppNavigator = createStackNavigator(
       screen: DetailScreen,
     },
   },
-  {initialRouteName: 'Home'},
+  {initialRouteName: 'Indicadores'},
 );
 
 export default createAppContainer(AppNavigator);
