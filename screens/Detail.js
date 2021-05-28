@@ -3,13 +3,39 @@ import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 const Detail = ({navigation}) => {
-    const name = navigation.getParam('name');
-    return (
-      <View>
-        <Text>Alegale {name}</Text>
-      </View>
-    );
+  const name = navigation.getParam('name');
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const fetchData = async () => {
+    var link = 'https://mindicador.cl/api/' + name;
+    axios.get(link).then(function (response) {
+      console.log(response.data.serie);
+      setData(response.data.serie);
+      setLoading(false);
+    });
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => navigation.navigate('Detalle', {name: item.valor})}>
+      <Text style={styles.title}>{item.valor}</Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.fecha}
+      />
+    </View>
+  );
+};
 
 export default Detail;
 
