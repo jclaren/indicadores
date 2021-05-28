@@ -1,21 +1,23 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
-import axios from 'axios';
-import {Button} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
+import mindicador from '../api/mindicador';
 
 const Indicators = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const fetchData = async () => {
-    axios.get('https://mindicador.cl/api').then(function (response) {
+  useEffect(() => {
+    mindicador.getIndicators().then(function (response) {
       const result = Object.values(response.data).filter(item => item.nombre);
       setData(result);
       setLoading(false);
     });
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
   const renderItem = ({item}) => (
@@ -25,20 +27,24 @@ const Indicators = ({navigation}) => {
         onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
         {item.nombre}
       </Text>
-      <Text style={styles.button}
-        onPress={() => navigation.navigate('Detalles', {indicator: item})}
-         >i</Text>
+      <Text
+        style={styles.button}
+        onPress={() => navigation.navigate('Detalles', {indicator: item})}>
+        i
+      </Text>
     </TouchableOpacity>
   );
 
   if (loading) {
-    return <View style={styles.container}>
-      <ActivityIndicator size="large" />
-    </View>
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
   }
 
   return (
-    <View style={styles.container}>      
+    <View style={styles.container}>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -56,13 +62,13 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
-    flexDirection: 'row',    
+    flexDirection: 'row',
     height: 60,
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  title: {    
+  title: {
     justifyContent: 'flex-start',
     paddingTop: 15,
     paddingLeft: 7,
