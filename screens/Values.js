@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import mindicador from '../api/mindicador';
-import date from '../components/Date'
+import date from '../components/Date';
 
 const Values = ({navigation}) => {
   const name = navigation.getParam('name');
@@ -43,7 +43,7 @@ const Values = ({navigation}) => {
         showsVerticalScrollIndicator={false}
         data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.fecha+Math.random()}
+        keyExtractor={item => item.fecha + Math.random()}
       />
     </View>
   );
