@@ -7,9 +7,7 @@ const Values = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log(name);
     mindicador.getValues(name).then(function (response) {
-      console.log(response.data.serie);
       setData(response.data.serie);
       setLoading(false);
     });
