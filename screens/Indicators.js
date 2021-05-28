@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 const Indicators = ({navigation}) => {
