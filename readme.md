@@ -1,4 +1,4 @@
-# Solucion React-Native para Indicadores
+# Indicadores comerciales
 ## Autor: Joaquin Claren
 ### Instalar dependencias
 npm install
