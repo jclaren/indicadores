@@ -42,6 +42,8 @@ const Values = ({navigation}) => {
   return (
     <View style={styles.container}>
       <FlatList
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.fecha}
