@@ -49,6 +49,8 @@ const Indicators = ({navigation}) => {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.codigo}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
