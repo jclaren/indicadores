@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, FlatList, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 import {Button} from 'react-native';
 
@@ -33,6 +33,7 @@ const Indicators = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <ActivityIndicator />
       <FlatList
         data={data}
         renderItem={renderItem}
