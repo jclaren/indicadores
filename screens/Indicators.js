@@ -67,15 +67,15 @@ const Indicators = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => (
-    <Item title={item.title} onPress={() => navigation.navigate('modal')} />
+    <Item title={item.nombre} onPress={() => navigation.navigate('modal')} />
   );
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={result}
+        data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.uf}
+        keyExtractor={item => item.codigo}
       />
     </View>
   );
