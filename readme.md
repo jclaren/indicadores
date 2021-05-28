@@ -1,7 +1,8 @@
 # Indicadores Económicos
 ## Autor: Joaquin Claren
 
-### Descripcion: Solucion React-Native con consumo api miindicador.cl
+### Descripcion: 
+Solucion React-Native con consumo api miindicador.cl
 ### Instalar dependencias
 npm install
 
