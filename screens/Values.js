@@ -38,6 +38,9 @@ const Values = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.description}>
+        (*) Últimos valores de {name} 
+      </Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -74,4 +77,11 @@ const styles = StyleSheet.create({
     color: 'blue',
     fontSize: 16,
   },
+  description: {
+    padding: 5,
+    backgroundColor:"#B9B8B8",
+    justifyContent: 'center',
+    fontSize: 12,
+    fontWeight: 'bold'
+  }
 });
