@@ -1,21 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
-import axios from 'axios';
+import mindicador from '../api/mindicador';
 
 const Values = ({navigation}) => {
   const name = navigation.getParam('name');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const fetchData = async () => {
-    var link = 'https://mindicador.cl/api/' + name;
-    axios.get(link).then(function (response) {
+  useEffect(() => {
+    console.log(name);
+    mindicador.getValues(name).then(function (response) {
       console.log(response.data.serie);
       setData(response.data.serie);
       setLoading(false);
     });
-  };
-  useEffect(() => {
-    fetchData();
   }, []);
 
   const dateFormat = date => {
