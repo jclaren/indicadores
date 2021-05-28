@@ -31,9 +31,14 @@ const Indicators = ({navigation}) => {
     </TouchableOpacity>
   );
 
+  if (loading) {
+    return <View style={styles.container}>
+      <ActivityIndicator size="large" />
+    </View>
+  }
+
   return (
-    <View style={styles.container}>
-      <ActivityIndicator />
+    <View style={styles.container}>      
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -51,21 +56,22 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
-    padding: 15,
-    flexDirection: 'row',
+    flexDirection: 'row',    
     height: 60,
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  title: {
+  title: {    
     justifyContent: 'flex-start',
+    paddingTop: 15,
+    paddingLeft: 7,
+    paddingRight: 20,
   },
   button: {
-    paddingHorizontal: 15,
-    paddingTop: 5,
+    paddingTop: 15,
+    paddingHorizontal: 20,
     color: 'blue',
     fontSize: 16,
-    backgroundColor: '#eee'
   },
 });
