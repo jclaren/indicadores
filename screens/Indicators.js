@@ -17,15 +17,13 @@ const Indicators = ({navigation}) => {
     fetchData();
   }, []);
 
-  const Item = ({title}) => (
+  const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.item}
-      onPress={() => navigation.navigate('Detalle', {name: 'Raul'})}>
-      <Text style={styles.title}>{title}</Text>
+      onPress={() => navigation.navigate('Detalle', {name: item.codigo})}>
+      <Text style={styles.title}>{item.nombre}</Text>
     </TouchableOpacity>
   );
-
-  const renderItem = ({item}) => <Item title={item.nombre} />;
 
   return (
     <View style={styles.container}>
