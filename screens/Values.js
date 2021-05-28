@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import mindicador from '../api/mindicador';
 
 const Values = ({navigation}) => {
