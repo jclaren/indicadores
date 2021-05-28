@@ -18,15 +18,13 @@ const Detail = ({navigation}) => {
     fetchData();
   }, []);
 
-  const dateFormat = (date) => {
+  const dateFormat = date => {
     return date.substring(0, 10);
-  }
+  };
 
   const renderItem = ({item}) => (
-    <TouchableOpacity
-      style={styles.item}
-      onPress={() => navigation.navigate('Detalle', {name: item.valor})}>      
-      <Text style={styles.title}>{dateFormat(item.fecha)}</Text>      
+    <TouchableOpacity style={styles.item}>
+      <Text style={styles.title}>{dateFormat(item.fecha)}</Text>
       <Text style={styles.title}>{item.valor}</Text>
     </TouchableOpacity>
   );
