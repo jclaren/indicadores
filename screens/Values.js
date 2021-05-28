@@ -18,9 +18,9 @@ const Values = ({navigation}) => {
   };
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.row}>
       <Text style={styles.title}>{dateFormat(item.fecha)}</Text>
-      <Text style={styles.title}>{item.valor}</Text>
+      <Text style={styles.button}>{item.valor}</Text>
     </TouchableOpacity>
   );
 
@@ -40,18 +40,25 @@ export default Values;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
   },
-  list: {
-    alignSelf: 'stretch',
-  },
-  item: {
-    paddingHorizontal: 15,
+  row: {
+    flex: 1,
+    flexDirection: 'row',
     height: 60,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+  },
+  title: {
+    justifyContent: 'flex-start',
+    paddingTop: 15,
+    paddingLeft: 7,
+    paddingRight: 20,
+  },
+  button: {
+    paddingTop: 15,
+    paddingHorizontal: 20,
+    color: 'blue',
+    fontSize: 16,
   },
 });
