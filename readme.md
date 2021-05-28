@@ -9,7 +9,9 @@ pod install
 
 react-native run-ios
 
-### Editar archivo android/local.properties
+### Ejecutar en Android
+Editar archivo android/local.properties
+
 sdk.dir = {/path/Android/sdk}
 
 react-native run-android
