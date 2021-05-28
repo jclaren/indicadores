@@ -1,6 +1,6 @@
+/* Function Component doc: https://reactnative.dev/docs/intro-react*/
 import React from 'react';
 import {Text} from 'react-native';
-
 const dateFormat = date => {
   return date.substring(0, 10);
 };
