@@ -16,6 +16,13 @@ const Detail = ({navigation}) => {
   );
 };
 
+Detail.navigationOptions = ({navigation}) => {
+  const indicator = navigation.getParam('indicator');
+  return {
+    title: indicator.nombre,
+  };
+};
+
 export default Detail;
 
 const styles = StyleSheet.create({
