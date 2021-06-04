@@ -11,11 +11,11 @@ import mindicador from '../api/mindicador';
 import date from '../components/Date';
 
 const Values = ({navigation}) => {
-  const name = navigation.getParam('name');
+  const item = navigation.getParam('item');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   useEffect(() => {
-    mindicador.getValues(name).then(function (response) {
+    mindicador.getValues(item.codigo).then(function (response) {
       setData(response.data.serie);
       setLoading(false);
     });
@@ -38,9 +38,7 @@ const Values = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.description}>
-        (*) Últimos valores de {name} 
-      </Text>
+      <Text style={styles.description}>(*) Últimos valores de {item.nombre}</Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -50,6 +48,13 @@ const Values = ({navigation}) => {
       />
     </View>
   );
+};
+
+Values.navigationOptions = ({navigation}) => {
+  const item = navigation.getParam('item');
+  return {
+    title: item.nombre
+  };
 };
 
 export default Values;
@@ -79,9 +84,9 @@ const styles = StyleSheet.create({
   },
   description: {
     padding: 5,
-    backgroundColor:"#B9B8B8",
+    backgroundColor: '#B9B8B8',
     justifyContent: 'center',
     fontSize: 12,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

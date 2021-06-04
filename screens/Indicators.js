@@ -21,7 +21,7 @@ const Indicators = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('Valores', {name: item.codigo})}>
+    <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('Valores', {item: item})}>
       <Text
         style={styles.title}
         >
