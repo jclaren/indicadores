@@ -15,10 +15,16 @@ const Values = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   useEffect(() => {
-    mindicador.getValues(item.codigo).then(function (response) {
-      setData(response.data.serie);
-      setLoading(false);
-    });
+    mindicador
+      .getValues(item.codigo)
+      .then(function (response) {
+        setData(response.data.serie);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        console.log('Problema en la operación: ' + error.message);
+        throw error;
+      });
   }, []);
 
   const renderItem = ({item}) => (
@@ -38,7 +44,9 @@ const Values = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.description}>(*) Últimos valores de {item.nombre}</Text>
+      <Text style={styles.description}>
+        (*) Últimos valores de {item.nombre}
+      </Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -53,7 +61,7 @@ const Values = ({navigation}) => {
 Values.navigationOptions = ({navigation}) => {
   const item = navigation.getParam('item');
   return {
-    title: item.nombre
+    title: item.nombre,
   };
 };
 
