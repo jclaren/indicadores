@@ -36,7 +36,7 @@ const Values = ({navigation}) => {
 
   if (loading) {
     return (
-      <View style={styles.container}>
+      <View style={styles.loading}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -71,6 +71,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+  }, 
   row: {
     flex: 1,
     flexDirection: 'row',
