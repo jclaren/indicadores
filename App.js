@@ -12,13 +12,24 @@ const AppNavigator = createStackNavigator(
       screen: IndicatorsScreen,
     },
     Valores: {
-      screen: ValuesScreen,      
+      screen: ValuesScreen,
     },
     Detalles: {
       screen: DetailScreen,
     },
   },
-  {initialRouteName: 'Indicadores'},
+  {
+    initialRouteName: 'Indicadores',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#1D5595',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: '800',
+      },
+    },
+  },
 );
 
 export default createAppContainer(AppNavigator);
